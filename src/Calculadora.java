@@ -1,5 +1,6 @@
 
 import java.util.StringTokenizer;
+import java.util.Scanner;
 
 
 
@@ -14,11 +15,25 @@ public class Calculadora {
      * @param args the command line arguments
      */
     public static void main(String[] args) throws ErrorDeSintaxisException {
-        String cadena = "(5-4)*3--2";
-        comp= new Compilador();
-        StringTokenizer lexemas = comp.analisisLexico(cadena);
-        CompositeEA nodo = comp.arbolDeAnalisisSintactico(lexemas);
-        System.out.println(nodo);
-        System.out.println(nodo.evalua());
+       
+        Scanner sc = new Scanner(System.in);
+        boolean salir=false;
+       
+        while(!salir){
+            
+            System.out.println("Ingresa exit para salir o la operación que deseas realizar ( +,-,/,*,sqrt,sen,cos,tan)");
+            String cadena = sc.nextLine();
+           
+            if(cadena.equals("exit")){
+                salir=true;
+            }else{
+                comp= new Compilador();
+                StringTokenizer lexemas = comp.analisisLexico(cadena);
+                CompositeEA nodo = comp.arbolDeAnalisisSintactico(lexemas);
+                System.out.println(nodo);
+                System.out.println(nodo.evalua());
+            }
+        }
+        sc.close();  
     }
 }
