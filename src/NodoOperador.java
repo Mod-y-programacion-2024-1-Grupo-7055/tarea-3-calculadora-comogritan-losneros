@@ -81,11 +81,15 @@ public abstract class NodoOperador implements CompositeEA{
         String operador = this instanceof NodoSuma ? " + "
                         : this instanceof NodoResta ? " - "
                         : this instanceof NodoMultiplicacion ? " * " 
+<<<<<<< HEAD
                         : this instanceof NodoDivision ? " / "
                         : this instanceof NodoCos ? " cos "
                         : this instanceof NodoSen ? " sen "
                         : this instanceof NodoTan ? " tan "
                         : " sqrt ";
+=======
+                        : " / ";
+>>>>>>> 8fa0e85 (no c pq no jala)
 
         if (izq != null) {
             return "(" + izq + operador + der + ")";
@@ -118,6 +122,7 @@ public abstract class NodoOperador implements CompositeEA{
                     return new NodoDivision(null,null);
                 case "(":
                     return new NodoParentesis();
+<<<<<<< HEAD
                 case "sen":
                     return new NodoSen(null,null);
                 case "tan":
@@ -125,6 +130,18 @@ public abstract class NodoOperador implements CompositeEA{
                 case "cos":
                     return new NodoCos(null, null);
                 case "sqrt":
+=======
+                //faltaban los casos de los nuevos operadores unarios, hay que crear sus respectivas clases
+                case "s":
+                    NodoSen senNode = new NodoSen(null, null);
+                    senNode.precedence = anteriorEsOperador ? 2 : 0;
+                    return senNode;
+                case "c":
+                    return new NodoCos(null,null);
+                case "t":
+                   return new NodoTan(null,null);
+                case "r":
+>>>>>>> 8fa0e85 (no c pq no jala)
                     return new NodoSqrt(null,null);
                 default:
                     throw new ErrorDeSintaxisException("Error de Sintáxis");

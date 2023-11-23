@@ -14,6 +14,7 @@ public class NodoParentesis extends NodoOperador {
     /**
      *
      */
+    //el parentesis debe tener clase 3
     public NodoParentesis() {
         super();
         precedence = 3;
